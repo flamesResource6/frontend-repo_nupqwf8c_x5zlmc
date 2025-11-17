@@ -3,7 +3,6 @@ import Hero from './components/Hero'
 import Workshops from './components/Workshops'
 import Experience from './components/Experience'
 import Logos from './components/Logos'
-import Contact from './components/Contact'
 import ParallaxSection from './components/ParallaxSection'
 
 function App() {
@@ -20,9 +19,6 @@ function App() {
         </ParallaxSection>
         <ParallaxSection strength={120} className="bg-white/0">
           <Experience />
-        </ParallaxSection>
-        <ParallaxSection strength={140} className="bg-white/0">
-          <Contact />
         </ParallaxSection>
       </main>
       <footer className="py-10 text-center text-sm text-gray-600">
