@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 export default function Experience() {
   const roles = [
     {
@@ -53,21 +55,25 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">Experience</h2>
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">Experience</h2>
+        </Reveal>
         <div className="mt-10 grid gap-6">
-          {roles.map((r) => (
-            <div key={r.company} className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <div className="text-lg font-semibold text-gray-900">{r.company}</div>
-                <div className="text-sm text-gray-600">{r.period}</div>
+          {roles.map((r, i) => (
+            <Reveal key={r.company} delay={i * 0.08}>
+              <div className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <div className="text-lg font-semibold text-gray-900">{r.company}</div>
+                  <div className="text-sm text-gray-600">{r.period}</div>
+                </div>
+                <div className="text-sm text-gray-700">{r.title}</div>
+                <ul className="mt-3 space-y-1 text-gray-700">
+                  {r.bullets.map((b) => (
+                    <li key={b}>• {b}</li>
+                  ))}
+                </ul>
               </div>
-              <div className="text-sm text-gray-700">{r.title}</div>
-              <ul className="mt-3 space-y-1 text-gray-700">
-                {r.bullets.map((b) => (
-                  <li key={b}>• {b}</li>
-                ))}
-              </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

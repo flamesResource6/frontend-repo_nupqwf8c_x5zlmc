@@ -1,12 +1,19 @@
 import Spline from '@splinetool/react-spline'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.6])
+
   return (
-    <section className="relative min-h-[90vh] flex items-center">
-      <div className="absolute inset-0">
+    <section ref={ref} className="relative min-h-[90vh] flex items-center">
+      <motion.div className="absolute inset-0" style={{ y }}>
         <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-      </div>
-      <div className="relative z-10 w-full">
+      </motion.div>
+      <motion.div className="relative z-10 w-full" style={{ opacity }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 py-24">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-3 py-1 text-sm border border-white/60 w-fit">
@@ -45,7 +52,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-white/70 via-white/30 to-transparent" />
     </section>
   )

@@ -4,6 +4,7 @@ import Workshops from './components/Workshops'
 import Experience from './components/Experience'
 import Logos from './components/Logos'
 import Contact from './components/Contact'
+import ParallaxSection from './components/ParallaxSection'
 
 function App() {
   return (
@@ -11,10 +12,18 @@ function App() {
       <Navbar />
       <main className="pt-16">
         <Hero />
-        <Logos />
-        <Workshops />
-        <Experience />
-        <Contact />
+        <ParallaxSection strength={80} className="bg-white/0">
+          <Logos />
+        </ParallaxSection>
+        <ParallaxSection strength={100} className="bg-white/0">
+          <Workshops />
+        </ParallaxSection>
+        <ParallaxSection strength={120} className="bg-white/0">
+          <Experience />
+        </ParallaxSection>
+        <ParallaxSection strength={140} className="bg-white/0">
+          <Contact />
+        </ParallaxSection>
       </main>
       <footer className="py-10 text-center text-sm text-gray-600">
         © {new Date().getFullYear()} Ben Rotenberg — Generative AI Consultant
